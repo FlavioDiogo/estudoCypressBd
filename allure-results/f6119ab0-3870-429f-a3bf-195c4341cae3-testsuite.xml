@@ -1,0 +1,55 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1738952693285' stop='1738952694000'>
+    <name>Testes de Banco de Dados no Cypress</name>
+    <title>Testes de Banco de Dados no Cypress</title>
+    <test-cases>
+        <test-case start='1738952693285' status='passed' stop='1738952693491'>
+            <name>Deve inserir um novo usuário</name>
+            <title>Deve inserir um novo usuário</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1738952693502' status='passed' stop='1738952693560'>
+            <name>Deve buscar um usuário pelo e-mail</name>
+            <title>Deve buscar um usuário pelo e-mail</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1738952693570' status='passed' stop='1738952693643'>
+            <name>Deve listar todos os usuários cadastrados</name>
+            <title>Deve listar todos os usuários cadastrados</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1738952693653' status='passed' stop='1738952693786'>
+            <name>Deve listar todos os usuários cadastrados</name>
+            <title>Deve listar todos os usuários cadastrados</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1738952693795' status='passed' stop='1738952693934'>
+            <name>Deve atualizar o nome do usuário e validar a mudança</name>
+            <title>Deve atualizar o nome do usuário e validar a mudança</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1738952693945' status='passed' stop='1738952693999'>
+            <name>Deve excluir um usuário pelo e-mail apenas se ele existir</name>
+            <title>Deve excluir um usuário pelo e-mail apenas se ele existir</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>
