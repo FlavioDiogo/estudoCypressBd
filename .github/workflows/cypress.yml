@@ -1,0 +1,55 @@
+name: Cypress Tests
+
+on:
+  push:
+    branches:
+      - main  # Executa a pipeline quando houver push na branch main
+  pull_request:
+    branches:
+      - main  # Executa a pipeline em PRs na branch main
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest  # Sistema operacional usado no runner
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: meu_banco
+          MYSQL_USER: usuario
+          MYSQL_PASSWORD: senha
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --host=localhost --user=root --password=root"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Configurar banco de dados
+        run: |
+          npm install -g mysql
+          mysql -h 127.0.0.1 -u root -proot -e "CREATE DATABASE IF NOT EXISTS meu_banco;"
+          mysql -h 127.0.0.1 -u root -proot meu_banco < cypress/fixtures/db_init.sql  # Caso tenha um script para criar tabelas
+
+      - name: Rodar testes Cypress
+        run: npx cypress run
+        env:
+          CYPRESS_DB_HOST: 127.0.0.1
+          CYPRESS_DB_USER: root
+          CYPRESS_DB_PASSWORD: root
+          CYPRESS_DB_NAME: meu_banco
