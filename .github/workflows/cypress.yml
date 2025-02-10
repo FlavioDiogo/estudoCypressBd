@@ -43,8 +43,7 @@ jobs:
       - name: Configurar banco de dados
         run: |
           npm install -g mysql
-          mysql -h 127.0.0.1 -u root -proot meu_banco < cypress/fixtures/db_init.sql  # Caso tenha um script para criar tabelas
-
+  
       - name: Rodar testes Cypress
         run: npx cypress run
         env:
