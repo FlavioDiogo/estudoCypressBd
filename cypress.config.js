@@ -15,10 +15,10 @@ module.exports = {
       on('task', {
         queryDb: (query) => {
           const connection = mysql.createConnection({
-            host: 'sql10.freesqldatabase.com',  // Se for um banco online, coloque o host do seu provedor
-            user: 'sql10761506',        // Seu usuário do MySQL
-            password: 'JRjwSQSfSh',        // Senha (deixe vazio se não tiver)
-            database: 'sql10761506' // Nome do banco de dados
+            host: process.env.DB_HOST,
+            user: process.env.DB_USER,
+            password: process.env.DB_PASSWORD,
+            database: process.env.DB_NAME
           });
 
           return new Promise((resolve, reject) => {

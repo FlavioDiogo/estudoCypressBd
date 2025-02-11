@@ -12,7 +12,6 @@
   "license": "ISC",
   "devDependencies": {
     "@faker-js/faker": "^9.4.0",
-    "@shelex/cypress-allure-plugin": "^2.40.2",
     "allure-commandline": "^2.32.2",
     "cypress": "^14.0.2",
     "mocha-allure-reporter": "^1.4.0",
