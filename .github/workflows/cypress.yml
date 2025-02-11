@@ -47,7 +47,7 @@ jobs:
       - name: Rodar testes Cypress
         run: npx cypress run
         env:
-          CYPRESS_DB_HOST: 127.0.0.1
-          CYPRESS_DB_USER: root
-          CYPRESS_DB_PASSWORD: root
-          CYPRESS_DB_NAME: meu_banco
+           DB_HOST: ${{ secrets.DB_HOST }}
+           DB_USER: ${{ secrets.DB_USER }}
+           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+           DB_NAME: ${{ secrets.DB_NAME }}
