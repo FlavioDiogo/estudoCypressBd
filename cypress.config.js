@@ -1,6 +1,5 @@
 module.exports = {
   e2e: {
-    specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
@@ -15,10 +14,10 @@ module.exports = {
       on('task', {
         queryDb: (query) => {
           const connection = mysql.createConnection({
-            host: process.env.DB_HOST,
-            user: process.env.DB_USER,
-            password: process.env.DB_PASSWORD,
-            database: process.env.DB_NAME
+            host: 'sql10.freesqldatabase.com',  // Se for um banco online, coloque o host do seu provedor
+            user: 'sql10761506',        // Seu usuário do MySQL
+            password: 'JRjwSQSfSh',        // Senha (deixe vazio se não tiver)
+            database: 'sql10761506' // Nome do banco de dados
           });
 
           return new Promise((resolve, reject) => {
@@ -32,7 +31,7 @@ module.exports = {
       });
     },
     "env": {
-      "allure": true,
-    },
+    "allure": true,
   },
-};
+},
+}
