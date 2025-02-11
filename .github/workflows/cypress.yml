@@ -16,10 +16,10 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-           DB_HOST: ${{ secrets.DB_HOST }}
-           DB_USER: ${{ secrets.DB_USER }}
-           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-           DB_NAME: ${{ secrets.DB_NAME }}
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: meu_banco
+          MYSQL_USER: usuario
+          MYSQL_PASSWORD: senha
         ports:
           - 3306:3306
         options: >-
@@ -43,11 +43,13 @@ jobs:
       - name: Configurar banco de dados
         run: |
           npm install -g mysql
-  
+          mysql -h 127.0.0.1 -u root -proot -e "CREATE DATABASE IF NOT EXISTS meu_banco;"
+          mysql -h 127.0.0.1 -u root -proot meu_banco < cypress/fixtures/db_init.sql  # Caso tenha um script para criar tabelas
+
       - name: Rodar testes Cypress
         run: npx cypress run
         env:
-           DB_HOST: ${{ secrets.DB_HOST }}
-           DB_USER: ${{ secrets.DB_USER }}
-           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-           DB_NAME: ${{ secrets.DB_NAME }}
+          CYPRESS_DB_HOST: 127.0.0.1
+          CYPRESS_DB_USER: root
+          CYPRESS_DB_PASSWORD: root
+          CYPRESS_DB_NAME: meu_banco
